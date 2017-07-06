@@ -8,7 +8,8 @@
   <body>
     <div id="map" class="map">
       <select id="baselayers" autocomplete="off">
-        <option value="opencycle" selected="selected">OpenCycleMap</option>
+        <option value="stamen" selected="selected">Black &amp; White</option>
+        <option value="opencycle">OpenCycleMap</option>
         <option value="osmbe">OpenStreetMap Belgium</option>
         <option value="osmbe-fr">OpenStreetMap Belgium (fr)</option>
         <option value="osmbe-nl">OpenStreetMap Belgium (nl)</option>
@@ -25,6 +26,12 @@
       proj4.defs("EPSG:31370","+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.869,52.2978,-103.724,0.3366,-0.457,1.8422,-1.2747 +units=m +no_defs");
 
       var baselayers = {
+        "stamen": new ol.layer.Tile({
+          source: new ol.source.XYZ({
+            url: "http://{a-d}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png",
+            attributions: [ ol.source.OSM.ATTRIBUTION, "Maps &copy; <a href=\"http://www.stamen.com/\">Stamen Design</a>" ]
+          })
+        }),
         "opencycle": new ol.layer.Tile({
           source: new ol.source.XYZ({
             url: "https://{a-c}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=05cd428b293d4da1a7d2db69d11bc83e",
